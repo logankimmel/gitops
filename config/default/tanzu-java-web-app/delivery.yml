@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: tanzu-java-web-app
     apps.tanzu.vmware.com/has-tests: "true"
-    apps.tanzu.vmware.com/workload-type: logan
+    apps.tanzu.vmware.com/workload-type: gitops
     app.kubernetes.io/component: run
     carto.run/workload-name: tanzu-java-web-app
 spec:
@@ -24,7 +24,7 @@ spec:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: tanzu-java-web-app
         apps.tanzu.vmware.com/has-tests: "true"
-        apps.tanzu.vmware.com/workload-type: logan
+        apps.tanzu.vmware.com/workload-type: gitops
         carto.run/workload-name: tanzu-java-web-app
         conventions.apps.tanzu.vmware.com/framework: spring-boot
     spec:
@@ -32,7 +32,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor.vmw.binbytes.io/tap/tanzu-java-web-app-default@sha256:7f14cdb906df6a610e35923b12ae94179f63de8a6d17348312529db610d819ac
+        image: harbor.vmw.binbytes.io/tap/tanzu-java-web-app-default@sha256:b2395833152f28a0e4d10def759de2f7c1ece207951ca36cdbc0115b53e59cf1
         name: workload
         ports:
         - containerPort: 8080
