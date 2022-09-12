@@ -32,7 +32,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor.vmw.binbytes.io/tap/tanzu-java-web-app-default@sha256:1888c009332ee57c1b4a64619e777fbec61fe666baa92d6bc6de54aa9b4e2473
+        image: harbor.vmw.binbytes.io/tap/tanzu-java-web-app-default@sha256:468be2a66966950b1cfd285dd4ee969bfe912ed1d1423547dcd0ccf1c1fdc05e
         name: workload
         ports:
         - containerPort: 8080
