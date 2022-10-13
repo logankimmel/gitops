@@ -2,6 +2,9 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: logan-spring
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
     app.kubernetes.io/part-of: logan-spring
     apps.tanzu.vmware.com/has-tests: "true"
@@ -14,7 +17,7 @@ spec:
       annotations:
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 2.7.3
-        conventions.apps.tanzu.vmware.com/applied-conventions: |-
+        conventions.carto.run/applied-conventions: |-
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -33,7 +36,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor.vmw.binbytes.io/tap/logan-spring-default@sha256:64bbba73d2bb18a7d0a33cfa27a0ac6457b8cf4b62facc076c20a12f70d44264
+        image: harbor.vmw.binbytes.io/tap/logan-spring-default@sha256:15e5221bebd48e4f625c88630f05ce9a440e507d393d3fb5dd25f7092e42f60c
         livenessProbe:
           httpGet:
             path: /livez
