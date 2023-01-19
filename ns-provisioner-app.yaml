@@ -1,0 +1,15 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: desired-namespaces-app
+  namespace: tap-namespace-provisioning
+spec:
+  serviceAccountName: default
+  syncPeriod: 1m
+  fetch:
+  - git:
+      url: https://github.com/logankimmel/gitops.git
+      ref: origin/main
+      subPath: TAP/ns-provisioner-cm.yaml
+  deploy:
+  - kapp: {}
