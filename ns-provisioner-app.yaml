@@ -4,12 +4,16 @@ metadata:
   name: desired-namespaces-app
   namespace: tap-namespace-provisioning
 spec:
-  serviceAccountName: default
+  serviceAccountName: provisioner
   syncPeriod: 1m
   fetch:
   - git:
       url: https://github.com/logankimmel/gitops.git
       ref: origin/main
-      subPath: TAP/ns-provisioner-cm.yaml
+      subPath: TAP
+  template:
+  - ytt:
+      paths:
+      - ns-provisioner-cm.yaml
   deploy:
   - kapp: {}
