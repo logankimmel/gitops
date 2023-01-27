@@ -10,5 +10,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: gitops-repo
-  path: "TAP/ns-provisioner-cm.yaml"
+  path: "./TAP-kustomize"
   prune: true
