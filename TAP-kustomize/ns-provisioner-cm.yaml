@@ -13,3 +13,4 @@ data:
     ---
     namespaces:
     - name: devspace
+    - name: example-ns
