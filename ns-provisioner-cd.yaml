@@ -5,7 +5,7 @@ metadata:
   name: desired-namespaces-cd
   namespace: default
 spec:
-  interval: 3m
+  interval: 1m
   targetNamespace: tap-namespace-provisioning
   sourceRef:
     kind: GitRepository
