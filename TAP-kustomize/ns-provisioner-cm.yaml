@@ -13,4 +13,3 @@ data:
     ---
     namespaces:
     - name: devspace
-    - name: testing
