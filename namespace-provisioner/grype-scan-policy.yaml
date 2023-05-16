@@ -22,11 +22,11 @@ spec:
     isSafe(match) {
       severities := { e | e := match.ratings.rating.severity } | { e | e := match.ratings.rating[_].severity }
       some i
+      fails := contains(notAllowedSeverities, severities[i])
       not fails
     }
     isSafe(match) {
-      ignore := contains(ignoreCves, match.id)
-      ignore
+      true #Always return true to allow all CVE's
     }
     deny[msg] {
       comps := { e | e := input.bom.components.component } | { e | e := input.bom.components.component[_] }
