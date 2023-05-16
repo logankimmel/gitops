@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: GitRepository
 metadata:
   name: gitops-repo
-  namespace: default
+  namespace: tap-namespace-provisioning
 spec:
   interval: 5m0s
   url: https://github.com/logankimmel/gitops
