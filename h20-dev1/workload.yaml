@@ -5,6 +5,7 @@ metadata:
   namespace: default
   labels:
     app: nginx
+    cost-center: test
 spec:
   replicas: 1
   selector:
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: public.ecr.aws/n0v5c2t4/tanzu:nginx-alpine
+        image: public.ecr.aws/n0v5c2t4/tanzu:nginx-alpinev3
         ports:
         - containerPort: 80
         volumeMounts:
