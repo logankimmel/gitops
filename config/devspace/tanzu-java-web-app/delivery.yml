@@ -46,7 +46,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/tanzu-java-web-app-devspace@sha256:9f7b4c7f17c4bc8cb3453992f628d148ccdf3fe4f5bb653af4158702d082e110
+        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/tanzu-java-web-app-devspace@sha256:bad8b248842e02a9167cf841109339b9b9dd0e3ade8b130481f6f953cb5ca5ed
         livenessProbe:
           httpGet:
             path: /livez
