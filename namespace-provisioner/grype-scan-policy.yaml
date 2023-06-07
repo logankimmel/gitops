@@ -26,6 +26,8 @@ spec:
       not fails
     }
     isSafe(match) {
+      # ignore := contains(ignoreCves, match.id)
+      # ignore
       true #Always return true to allow all CVE's
     }
     deny[msg] {
