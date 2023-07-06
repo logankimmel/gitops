@@ -46,7 +46,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/gitops-java-web-app-devspace@sha256:132adea745ca2d38f1efc6145197fd4d289f7294aa0e4fc34bdf332face50ef9
+        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/gitops-java-web-app-devspace@sha256:e0110269af97511c6bc7b55cc47eacb2cc962e89bdcc7289169de5727a86984d
         livenessProbe:
           httpGet:
             path: /livez
