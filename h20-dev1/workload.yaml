@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: gitops-nginx
-        image: public.ecr.aws/n0v5c2t4/tanzu:nginx-alpinev3
+        image: public.ecr.aws/n0v5c2t4/tanzu:nginx-alpine
         ports:
         - containerPort: 80
         volumeMounts:
