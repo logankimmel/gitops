@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: gitops-nginx
   namespace: default
   labels:
-    app: nginx
+    app: gitops-nginx
     cost-center: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: gitops-nginx
   template:
     metadata:
       labels:
-        app: nginx
+        app: gitops-nginx
     spec:
       containers:
-      - name: nginx
+      - name: gitops-nginx
         image: public.ecr.aws/n0v5c2t4/tanzu:nginx-alpinev3
         ports:
         - containerPort: 80
         volumeMounts:
         - name: nginx-persistent-storage
-          mountPath: /usr/share/nginx/html
+          mountPath: /usr/share/test
       volumes:
       - name: nginx-persistent-storage
         persistentVolumeClaim:
-          claimName: nginx-pvc
+          claimName: gitops-nginx-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: gitops-nginx
   namespace: default
 spec:
   ports:
@@ -40,14 +40,14 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app: nginx
+    app: gitops-nginx
   sessionAffinity: None
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: gitops-ingress
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -59,14 +59,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: nginx
+            name: gitops-nginx
             port:
               number: 80
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nginx-pvc
+  name: gitops-nginx-pvc
   namespace: default
 spec:
   accessModes:
