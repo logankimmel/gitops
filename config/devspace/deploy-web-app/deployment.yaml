@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-web-app
+  labels:
+    app: deploy-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-web-app
+  template:
+    metadata:
+      labels:
+        app: deploy-web-app
+    spec:
+      containers:
+      - env:
+        - name: JAVA_TOOL_OPTIONS
+          value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/deploy-web-app-devspace@sha256:a51bbed15d6a9ccc24c63b278f83feee44bbd4ed76049ab3fb15b5a06386e1a4
+        livenessProbe:
+          httpGet:
+            path: /livez
+            port: 8080
+            scheme: HTTP
+        name: workload
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8080
+            scheme: HTTP
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+
