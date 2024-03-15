@@ -19,8 +19,8 @@ spec:
         apps.tanzu.vmware.com/correlationid: https://github.com/logankimmel/tanzu-java-web-app?sub_path=/
         boot.spring.io/version: 3.1.3
         conventions.carto.run/applied-conventions: |-
-          appliveview-sample/app-live-view-appflavour-check
           spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/is-native-app-check
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
           spring-boot-convention/spring-boot-web
@@ -48,7 +48,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.health.probes.enabled="true" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/java-web-app-developer-ns@sha256:28ffc11de947be78b2f3eee9b0ed630f172a1fb8a7e77d422ee4c165a76389a7
+        image: us-west1-docker.pkg.dev/lkimmel-1069/tap/java-web-app-developer-ns@sha256:99037caa72bf51aa113e68d654e9d15edcf2fc9e609ee54f3584e2977ac53519
         livenessProbe:
           httpGet:
             path: /livez
